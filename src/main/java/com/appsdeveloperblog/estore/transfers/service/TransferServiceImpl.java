@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.estore.transfers.service;
 
+import java.net.ConnectException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -31,7 +33,7 @@ public class TransferServiceImpl implements TransferService {
 		this.restTemplate = restTemplate;
 	}
 
-	@Transactional(value="kafkaTransactionManager")
+	@Transactional
 	@Override
 	public boolean transfer(TransferRestModel transferRestModel) {
 		WithdrawalRequestedEvent withdrawalEvent = new WithdrawalRequestedEvent(transferRestModel.getSenderId(),

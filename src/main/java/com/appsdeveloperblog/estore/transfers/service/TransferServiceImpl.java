@@ -61,7 +61,7 @@ public class TransferServiceImpl implements TransferService {
 	}
 
 	private ResponseEntity<String> callRemoteServce() throws Exception {
-		String requestUrl = "http://localhost:8082/response/200";
+		String requestUrl = "http://mock-service:8083/response/200";
 		ResponseEntity<String> response = restTemplate.exchange(requestUrl, HttpMethod.GET, null, String.class);
 
 		if (response.getStatusCode().value() == HttpStatus.SERVICE_UNAVAILABLE.value()) {
